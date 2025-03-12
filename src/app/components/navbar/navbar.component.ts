@@ -1,3 +1,4 @@
+import { ExportService } from './../../services/export.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { NotesService } from '../../services/notes.service';
@@ -16,11 +17,15 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 export class NavbarComponent implements OnInit, OnDestroy {
   sidebarOpen = false;
   selectedNote: Note | null = null;
+  deletePromptVisible: boolean = false;
 
   private titleChange = new Subject<string>();
   private destroy$ = new Subject<void>();
 
-  constructor(private notesService: NotesService) {}
+  constructor(
+    private notesService: NotesService,
+    private exportService: ExportService
+  ) {}
 
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
@@ -49,10 +54,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.titleChange.next(title);
   }
 
+  toggleDeletePromptVisibility() {
+    this.deletePromptVisible = !this.deletePromptVisible;
+  }
+
   deleteNote(id: string, event: MouseEvent): void {
     event.stopPropagation();
-    if (confirm('¿Estás seguro de que quieres eliminar esta nota?')) {
-      this.notesService.deleteNote(id);
+    this.notesService.deleteNote(id);
+    this.deletePromptVisible = false;
+  }
+
+  exportNote(): void {
+    if (this.selectedNote) {
+      this.exportService.exportNoteAsMarkdown(this.selectedNote);
     }
   }
 }

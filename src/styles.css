@@ -11,16 +11,17 @@
   --color-gray: #7c8187;
   --color-lavender-gray: #c1c4cb;
   --color-black-coral: #5A6069;
+  --color-modal-backdrop: #00000080;
 
   --font-mono: "Roboto Mono", sans-serif;
+  --font-slab: "Roboto Slab", monospace, sans-serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 .markdown-preview {
-  font-family: "Roboto Slab", monospace, sans-serif;
   font-style: normal;
-  @apply text-onyx dark:text-white;
+  @apply text-onyx dark:text-white font-slab;
 }
 
 .markdown-preview h1 {

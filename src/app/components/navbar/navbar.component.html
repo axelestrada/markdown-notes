@@ -27,7 +27,7 @@
 
   <button
     *ngIf="selectedNote"
-    (click)="deleteNote(selectedNote.id, $event)"
+    (click)="toggleDeletePromptVisibility()"
     type="button"
     class="px-4 h-14 flex justify-center items-center cursor-pointer border-none outline-none"
   >
@@ -35,13 +35,33 @@
   </button>
 
   <button
+    (click)="exportNote()"
     type="button"
     class="w-10 h-10 m-2 ml-0 rounded-sm flex justify-center items-center bg-fire-opal hover:bg-atomic-tangerine cursor-pointer border-none outline-none"
   >
     <img src="assets/icon-save.svg" alt="icon save" />
   </button>
 
-  <div class="absolute">
+  <div
+    class="absolute top-0 left-0 w-screen h-screen bg-modal-backdrop font-slab flex justify-center items-center"
+    (click)="toggleDeletePromptVisibility()"
+    *ngIf="deletePromptVisible && selectedNote"
+  >
+    <div class="w-[343px] bg-chinese-black p-6">
+      <h4 class="text-xl font-bold text-white mb-4">Delete this document?</h4>
 
+      <p class="mb-5 text-lavender-gray text-sm font-light">
+        Are you sure you want to delete the '{{ selectedNote.title }}' document
+        and its contents? This action cannot be reversed.
+      </p>
+
+      <button
+        (click)="deleteNote(selectedNote.id, $event)"
+        type="button"
+        class="text-white w-full py-2 rounded-sm flex justify-center items-center bg-fire-opal hover:bg-atomic-tangerine cursor-pointer border-none outline-none"
+      >
+        Confirm & Delete
+      </button>
+    </div>
   </div>
 </nav>
