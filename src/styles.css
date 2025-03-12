@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+.markdown-preview h1 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.markdown-preview h2 {
+  @apply text-xl font-bold mb-3;
+}
+
+.markdown-preview h3 {
+  @apply text-lg font-bold mb-2;
+}
+
+.markdown-preview p {
+  @apply mb-4;
+}
+
+.markdown-preview ul {
+  @apply list-disc pl-5 mb-4;
+}
+
+.markdown-preview ol {
+  @apply list-decimal pl-5 mb-4;
+}
+
+.markdown-preview blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic;
+}
+
+.markdown-preview code {
+  @apply bg-gray-100 px-1 rounded;
+}
+
+.markdown-preview pre {
+  @apply bg-gray-100 p-4 rounded mb-4;
+}
+
+.markdown-preview a {
+  @apply text-blue-500 underline;
+}
