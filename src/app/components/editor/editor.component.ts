@@ -34,7 +34,6 @@ export class EditorComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Implementar autoguardado con debounce
     this.titleChange
       .pipe(takeUntil(this.destroy$), debounceTime(500), distinctUntilChanged())
       .subscribe((title) => {
@@ -44,7 +43,7 @@ export class EditorComponent implements OnInit, OnDestroy {
       });
 
     this.contentChange
-      .pipe(takeUntil(this.destroy$), debounceTime(500), distinctUntilChanged())
+      .pipe(takeUntil(this.destroy$), distinctUntilChanged())
       .subscribe((content) => {
         if (this.selectedNote) {
           this.notesService.updateNote(this.selectedNote.id, { content });
