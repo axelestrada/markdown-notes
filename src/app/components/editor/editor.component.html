@@ -1,1 +1,26 @@
-<p>editor works!</p>
+<div class="pl-4 bg-cultured flex-none flex justify-between items-center">
+  <h2 class="text-gray tracking-wider text-base">MARKDOWN NOTES</h2>
+
+  <button
+    (click)="togglePreview()"
+    type="button"
+    class="p-4 flex justify-center items-center cursor-pointer border-none outline-none"
+  >
+    <img src="assets/icon-show-preview.svg" alt="icon show preview" />
+  </button>
+</div>
+
+<ng-container *ngIf="selectedNote">
+  <textarea
+    *ngIf="!showPreview"
+    [(ngModel)]="selectedNote.content"
+    (ngModelChange)="onContentChange($event)"
+    class="bg-white px-4 my-1 text-sm flex-grow font-mono text-onyx resize-none w-full border-none outline-none leading-6"
+  ></textarea>
+</ng-container>
+
+<div
+  class="px-4 my-1 w-full flex-grow markdown-preview overflow-y-auto"
+  [innerHTML]="renderedContent"
+  *ngIf="showPreview"
+></div>

@@ -1,54 +1,130 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dark-charcoal: #2C2D31;
-  --color-onyx: #35383F;
-  --color-fire-opal: #E56643;
-  --color-atomic-tangerine: #F39765;
-  --color-cultured: #F5F5F5;
-  --color-gray: #7C8187;
+  --color-dark-charcoal: #2c2d31;
+  --color-onyx: #35383f;
+  --color-fire-opal: #e56643;
+  --color-atomic-tangerine: #f39765;
+  --color-cultured: #f5f5f5;
+  --color-gray: #7c8187;
+
+  --font-mono: "Roboto Mono", sans-serif;
+}
+
+.markdown-preview {
+  font-family: "Roboto Slab", monospace, sans-serif;
+  font-style: normal;
+  @apply text-onyx;
 }
 
 .markdown-preview h1 {
-  @apply text-2xl font-bold mb-4;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+  @apply my-[22px];
 }
 
 .markdown-preview h2 {
-  @apply text-xl font-bold mb-3;
+  font-weight: 200;
+  font-size: 28px;
+  line-height: 37px;
+  @apply my-[24px];
 }
 
 .markdown-preview h3 {
-  @apply text-lg font-bold mb-2;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+  @apply my-[24px];
+}
+
+.markdown-preview h4 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  @apply my-[26px];
+}
+
+.markdown-preview h5 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  @apply my-[26px];
+}
+
+.markdown-preview h6 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  @apply my-[32px] text-fire-opal;
 }
 
 .markdown-preview p {
-  @apply mb-4;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+  @apply my-3.5 text-gray;
 }
 
 .markdown-preview ul {
-  @apply list-disc pl-5 mb-4;
+  @apply my-4 pl-10 list-disc;
+
+  & li {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 9px;
+
+    &::marker {
+      font-size: 6px;
+      @apply text-fire-opal;
+    }
+  }
 }
 
 .markdown-preview ol {
-  @apply list-decimal pl-5 mb-4;
+  @apply list-decimal my-4 pl-10;
+
+  & li {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 9px;
+  }
 }
 
 .markdown-preview blockquote {
-  @apply border-l-4 border-gray-300 pl-4 italic;
+  @apply border-l-4 border-l-fire-opal border-0 p-6 bg-cultured rounded-sm;
+
+  p,
+  a {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    @apply text-onyx;
+  }
 }
 
 .markdown-preview code {
-  @apply bg-gray-100 px-1 rounded;
+  @apply bg-cultured px-1 rounded;
 }
 
 .markdown-preview pre {
-  @apply bg-gray-100 p-4 rounded mb-4;
+  @apply bg-cultured p-6 rounded my-5;
+
+  code {
+    font-family: "Roboto Mono", monospace, sans-serif;
+    @apply text-sm font-light px-0;
+  }
 }
 
 .markdown-preview a {
-  @apply text-blue-500 underline;
+  @apply underline;
 }
 
-body{
-  font-family: 'Roboto', sans-serif;
+body {
+  font-family: "Roboto", sans-serif;
 }
