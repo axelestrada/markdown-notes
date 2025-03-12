@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-dark-charcoal: #2C2D31;
+  --color-onyx: #35383F;
+  --color-fire-opal: #E56643;
+  --color-atomic-tangerine: #F39765;
+  --color-cultured: #F5F5F5;
+  --color-gray: #7C8187;
+}
+
 .markdown-preview h1 {
   @apply text-2xl font-bold mb-4;
 }
@@ -38,4 +47,8 @@
 
 .markdown-preview a {
   @apply text-blue-500 underline;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
 }

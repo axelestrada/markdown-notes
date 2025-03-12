@@ -14,6 +14,8 @@
         "@angular/router": "^19.2.0",
         "@angular/service-worker": "^19.2.0",
         "@angular/ssr": "^19.2.1",
+        "@hugeicons/angular": "^1.0.2",
+        "@hugeicons/core-free-icons": "^1.0.13",
         "@tailwindcss/postcss": "^4.0.13",
         "express": "^4.18.2",
         "marked": "^15.0.7",
@@ -314,6 +316,10 @@
     "@esbuild/win32-ia32": ["@esbuild/win32-ia32@0.25.0", "", { "os": "win32", "cpu": "ia32" }, "sha512-eSNxISBu8XweVEWG31/JzjkIGbGIJN/TrRoiSVZwZ6pkC6VX4Im/WV2cz559/TXLcYbcrDN8JtKgd9DJVIo8GA=="],
 
     "@esbuild/win32-x64": ["@esbuild/win32-x64@0.25.0", "", { "os": "win32", "cpu": "x64" }, "sha512-ZENoHJBxA20C2zFzh6AI4fT6RraMzjYw4xKWemRTRmRVtN9c5DcH9r/f2ihEkMjOW5eGgrwCslG/+Y/3bL+DHQ=="],
+
+    "@hugeicons/angular": ["@hugeicons/angular@1.0.2", "", { "dependencies": { "tslib": "^2.6.0" }, "peerDependencies": { "@angular/common": ">=17.0.0 <19.0.0", "@angular/core": ">=17.0.0 <19.0.0" } }, "sha512-PqWkWOQh7FZUylQ5Idf91b0zuXK8pem3HXGIg9JAyRkF0A1fow3jbdJmVK9THMFyIR1kLZrz8NpozkbwAVu8CQ=="],
+
+    "@hugeicons/core-free-icons": ["@hugeicons/core-free-icons@1.0.13", "", {}, "sha512-H0TwkJmvYXdAeUYvNXdQ4b94Xv6vIxZu2aQK+8fnm6Gho74yDrLH9pNqLk931OY8pVvLxPgEOZEDtBO2aZacng=="],
 
     "@inquirer/checkbox": ["@inquirer/checkbox@4.1.3", "", { "dependencies": { "@inquirer/core": "^10.1.8", "@inquirer/figures": "^1.0.11", "@inquirer/type": "^3.0.5", "ansi-escapes": "^4.3.2", "yoctocolors-cjs": "^2.1.2" }, "peerDependencies": { "@types/node": ">=18" }, "optionalPeers": ["@types/node"] }, "sha512-KU1MGwf24iABJjGESxhyj+/rlQYSRoCfcuHDEHXfZ1DENmbuSRfyrUb+LLjHoee5TNOFKwaFxDXc5/zRwJUPMQ=="],
 
