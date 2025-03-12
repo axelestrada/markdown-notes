@@ -1,6 +1,7 @@
-import { afterNextRender, Injectable } from '@angular/core';
+import { afterNextRender, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Note } from '../models/note.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -9,10 +10,17 @@ export class NotesService {
   private notes: Note[] = [];
   private notesSubject = new BehaviorSubject<Note[]>([]);
   private selectedNoteSubject = new BehaviorSubject<Note | null>(null);
+  private isBrowser: boolean;
 
-  constructor() {
+  constructor( @Inject(PLATFORM_ID) platformId: Object) {
     // Cargar notas del localStorage al iniciar
-    this.loadFromLocalStorage();
+    this.isBrowser = isPlatformBrowser(platformId);
+
+    // Solo inicializar el tema si estamos en un navegador
+    if (this.isBrowser) {
+      this.loadFromLocalStorage();
+    }
+
   }
 
   getNotes(): Observable<Note[]> {
@@ -31,7 +39,7 @@ export class NotesService {
   addNote(): void {
     const newNote: Note = {
       id: Date.now().toString(),
-      title: 'Nueva nota',
+      title: 'new-document.md',
       content: '',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -76,21 +84,21 @@ export class NotesService {
   }
 
   private saveToLocalStorage(): void {
-    // localStorage.setItem('notes', JSON.stringify(this.notes));
+    localStorage.setItem('notes', JSON.stringify(this.notes));
   }
 
   private loadFromLocalStorage(): void {
-    // const storedNotes = localStorage.getItem('notes');
-    // if (storedNotes) {
-    //   this.notes = JSON.parse(storedNotes).map((note: any) => ({
-    //     ...note,
-    //     createdAt: new Date(note.createdAt),
-    //     updatedAt: new Date(note.updatedAt),
-    //   }));
-    //   this.notesSubject.next([...this.notes]);
-    //   if (this.notes.length > 0) {
-    //     this.selectedNoteSubject.next(this.notes[0]);
-    //   }
-    // }
+    const storedNotes = localStorage.getItem('notes');
+    if (storedNotes) {
+      this.notes = JSON.parse(storedNotes).map((note: any) => ({
+        ...note,
+        createdAt: new Date(note.createdAt),
+        updatedAt: new Date(note.updatedAt),
+      }));
+      this.notesSubject.next([...this.notes]);
+      if (this.notes.length > 0) {
+        this.selectedNoteSubject.next(this.notes[0]);
+      }
+    }
   }
 }

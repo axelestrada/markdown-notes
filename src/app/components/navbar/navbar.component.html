@@ -1,5 +1,11 @@
 <nav class="w-full flex items-center justify-between bg-dark-charcoal">
+  <app-sidebar
+    (toggleSidebarVisible)="toggleSidebar()"
+    [isVisible]="sidebarOpen"
+  ></app-sidebar>
+
   <button
+    (click)="toggleSidebar()"
     type="button"
     class="w-14 h-14 flex justify-center items-center bg-onyx hover:bg-fire-opal cursor-pointer border-none outline-none"
   >
@@ -7,17 +13,21 @@
   </button>
 
   <div class="flex-1 flex items-center ml-5">
-    <img src="assets/icon-document.svg" alt="icon document" />
+    <ng-container *ngIf="selectedNote">
+      <img src="assets/icon-document.svg" alt="icon document" />
 
-    <input
-      type="text"
-      value="welcome.md"
-      class="text-white w-full ml-4 border-b-1 border-t-1 outline-none border-transparent focus:border-b-white"
-      autocomplete="off"
-    />
+      <input
+        [(ngModel)]="selectedNote.title"
+        (ngModelChange)="onTitleChange($event)"
+        class="text-white w-full ml-4 border-b-1 border-t-1 outline-none border-transparent focus:border-b-white"
+        autocomplete="off"
+      />
+    </ng-container>
   </div>
 
   <button
+    *ngIf="selectedNote"
+    (click)="deleteNote(selectedNote.id, $event)"
     type="button"
     class="px-4 h-14 flex justify-center items-center cursor-pointer border-none outline-none"
   >
@@ -30,4 +40,8 @@
   >
     <img src="assets/icon-save.svg" alt="icon save" />
   </button>
+
+  <div class="absolute">
+
+  </div>
 </nav>

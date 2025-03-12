@@ -51,13 +51,15 @@ export class EditorComponent implements OnInit, OnDestroy {
           this.updateRenderedContent();
         }
       });
-
-    this.notesService.addNote();
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  addNote(): void {
+    this.notesService.addNote();
   }
 
   onTitleChange(title: string): void {

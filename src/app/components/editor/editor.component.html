@@ -1,7 +1,8 @@
-<div class="pl-4 bg-cultured flex-none flex justify-between items-center">
+<div class="pl-4 h-11 bg-cultured dark:bg-dark-jungle flex-none flex justify-between items-center">
   <h2 class="text-gray tracking-wider text-base">MARKDOWN NOTES</h2>
 
   <button
+    *ngIf="selectedNote"
     (click)="togglePreview()"
     type="button"
     class="p-4 flex justify-center items-center cursor-pointer border-none outline-none"
@@ -10,17 +11,33 @@
   </button>
 </div>
 
-<ng-container *ngIf="selectedNote">
+<ng-container *ngIf="selectedNote; else noNote">
   <textarea
     *ngIf="!showPreview"
     [(ngModel)]="selectedNote.content"
     (ngModelChange)="onContentChange($event)"
-    class="bg-white px-4 my-1 text-sm flex-grow font-mono text-onyx resize-none w-full border-none outline-none leading-6"
+    class="bg-white dark:bg-chinese-black px-4 py-1 text-sm flex-grow font-mono text-onyx dark:text-white resize-none w-full border-none outline-none leading-6"
   ></textarea>
 </ng-container>
 
 <div
-  class="px-4 my-1 w-full flex-grow markdown-preview overflow-y-auto"
+  class="px-4 py-1 w-full flex-grow markdown-preview overflow-y-auto dark:bg-chinese-black"
   [innerHTML]="renderedContent"
   *ngIf="showPreview"
 ></div>
+
+<ng-template #noNote>
+  <div class="h-full flex items-center flex-col justify-center p-4 dark:bg-chinese-black">
+    <p class="mb-2 font-light text-gray text-center">
+      Looks like you deleted everything! Please create a new document
+    </p>
+
+    <button
+      (click)="addNote()"
+      type="button"
+      class="text-white px-4 h-10 m-2 ml-0 rounded-sm flex justify-center items-center bg-fire-opal hover:bg-atomic-tangerine cursor-pointer border-none outline-none"
+    >
+      + New Document
+    </button>
+  </div>
+</ng-template>
