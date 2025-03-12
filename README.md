@@ -1,6 +1,6 @@
 # Markdown Notes 📝  
 
-![Vista previa de Markdown Notes](./preview.jpg)
+![Vista previa de Markdown Notes](./preview.jpeg)
 
 Markdown Notes es una aplicación web que permite escribir, editar y guardar notas en formato **Markdown**.  
 
