@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditorComponent } from './components/editor/editor.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, EditorComponent, NavbarComponent],
+  imports: [CommonModule, EditorComponent],
   templateUrl: './app.component.html',
 })
 export class AppComponent {

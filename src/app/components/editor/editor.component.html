@@ -1,7 +1,102 @@
-<div class="flex flex-grow w-full">
+<nav class="w-full flex items-center justify-between bg-dark-charcoal">
+  <app-sidebar
+    (toggleSidebarVisible)="toggleSidebar()"
+    [isVisible]="sidebarOpen"
+  ></app-sidebar>
+
+  <button
+    (click)="toggleSidebar()"
+    type="button"
+    class="w-14 h-14 flex justify-center items-center bg-onyx hover:bg-fire-opal cursor-pointer border-none outline-none"
+  >
+    <img src="assets/icon-menu.svg" alt="icon menu" />
+  </button>
+
+  <div class="flex-1 flex items-center ml-5">
+    <ng-container *ngIf="selectedNote">
+      <img src="assets/icon-document.svg" alt="icon document" />
+
+      <input
+        [(ngModel)]="selectedNote.title"
+        (ngModelChange)="onTitleChange($event)"
+        class="text-white w-full ml-4 border-b-1 border-t-1 outline-none border-transparent focus:border-b-white"
+        autocomplete="off"
+      />
+    </ng-container>
+  </div>
+
+  <button
+    *ngIf="selectedNote"
+    (click)="toggleDeletePromptVisibility()"
+    type="button"
+    class="px-4 h-14 flex justify-center items-center cursor-pointer border-none outline-none"
+  >
+    <img src="assets/icon-delete.svg" alt="icon delete" />
+  </button>
+
+  <div class="relative m-2 ml-0" #exportDropdown *ngIf="selectedNote">
+    <button
+      (click)="toggleExportMenu()"
+      type="button"
+      class="w-10 h-10 md:w-max md:px-4 rounded-sm flex justify-center items-center bg-fire-opal hover:bg-atomic-tangerine cursor-pointer border-none outline-none"
+    >
+      <img src="assets/icon-export.svg" alt="icon export" />
+      <span class="text-white pl-2 hidden md:inline-block font-medium">Export File</span>
+    </button>
+
+    <div
+      *ngIf="showExportMenu"
+      class="absolute right-0 mt-4 w-48 bg-dark-charcoal shadow-lg z-10"
+    >
+      <ul>
+        <li>
+          <button
+            (click)="exportNote('md')"
+            class="w-full text-left px-4 py-2 text-white"
+          >
+            Export as Markdown
+          </button>
+        </li>
+        <li>
+          <button
+            (click)="exportNote('pdf')"
+            class="w-full text-left px-4 py-2 text-white"
+          >
+            Export as PDF
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div
+    class="absolute top-0 left-0 w-screen h-screen bg-modal-backdrop font-slab flex justify-center items-center"
+    (click)="toggleDeletePromptVisibility()"
+    *ngIf="deletePromptVisible && selectedNote"
+  >
+    <div class="w-[343px] bg-chinese-black p-6">
+      <h4 class="text-xl font-bold text-white mb-4">Delete this document?</h4>
+
+      <p class="mb-5 text-lavender-gray text-sm font-light">
+        Are you sure you want to delete the '{{ selectedNote.title }}' document
+        and its contents? This action cannot be reversed.
+      </p>
+
+      <button
+        (click)="deleteNote(selectedNote.id, $event)"
+        type="button"
+        class="text-white w-full py-2 rounded-sm flex justify-center items-center bg-fire-opal hover:bg-atomic-tangerine cursor-pointer border-none outline-none"
+      >
+        Confirm & Delete
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="flex flex-col md:flex-row flex-grow w-full overflow-hidden">
   <ng-container *ngIf="selectedNote; else noNote">
     <div
-      class="flex-1 flex flex-col w-full"
+      class="flex flex-grow flex-col flex-[1]"
       [ngClass]="showPreview ? 'hidden md:flex' : ''"
     >
       <div
@@ -29,12 +124,12 @@
 
     <div
       *ngIf="selectedNote"
-      class="w-0.5 bg-cultured dark:bg-dark-charcoal h-full"
+      class="w-0.5 bg-cultured dark:bg-dark-charcoal"
       [ngClass]="showPreview ? 'hidden md:block' : 'hidden'"
     ></div>
 
     <div
-      class="flex-1 flex flex-col w-full"
+      class="flex flex-grow flex-col overflow-hidden flex-[1]"
       *ngIf="showPreview && selectedNote"
     >
       <div
@@ -59,7 +154,8 @@
       </div>
 
       <div
-        class="px-4 py-1 w-full flex-grow markdown-preview overflow-y-auto dark:bg-chinese-black"
+        #previewContainer
+        class="px-4 py-1 w-full flex-grow markdown-preview overflow-y-scroll dark:bg-chinese-black"
         [innerHTML]="renderedContent"
         *ngIf="showPreview"
       ></div>
