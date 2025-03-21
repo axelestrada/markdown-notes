@@ -1,64 +1,75 @@
 <div class="flex flex-grow w-full">
-  <div
-    class="flex-1 flex flex-col w-full"
-    [ngClass]="showPreview ? 'hidden md:flex' : ''"
-  >
+  <ng-container *ngIf="selectedNote; else noNote">
     <div
-      class="pl-4 h-11 bg-cultured dark:bg-dark-jungle flex-none flex justify-between items-center"
+      class="flex-1 flex flex-col w-full"
+      [ngClass]="showPreview ? 'hidden md:flex' : ''"
     >
-      <h2 class="text-gray tracking-wider text-base">MARKDOWN NOTES</h2>
-
-      <button
-        *ngIf="!showPreview"
-        (click)="togglePreview()"
-        type="button"
-        class="p-4 flex justify-center items-center cursor-pointer border-none outline-none"
+      <div
+        class="pl-4 h-11 bg-cultured dark:bg-dark-jungle flex-none flex justify-between items-center"
       >
-        <img src="assets/icon-show-preview.svg" alt="icon show preview" />
-      </button>
-    </div>
+        <h2 class="text-gray tracking-wider text-base">MARKDOWN NOTES</h2>
 
-    <ng-container *ngIf="selectedNote; else noNote">
+        <button
+          *ngIf="!showPreview"
+          (click)="togglePreview()"
+          type="button"
+          class="p-4 flex justify-center items-center cursor-pointer border-none outline-none"
+        >
+          <img src="assets/icon-show-preview.svg" alt="icon show preview" />
+        </button>
+      </div>
+
       <textarea
+        *ngIf="selectedNote"
         [(ngModel)]="selectedNote.content"
         (ngModelChange)="onContentChange($event)"
         class="bg-white dark:bg-chinese-black px-4 py-1 text-sm flex-grow font-mono text-onyx dark:text-white resize-none w-full border-none outline-none leading-6"
       ></textarea>
-    </ng-container>
-  </div>
-
-  <div
-    *ngIf="selectedNote"
-    class="w-0.5 bg-cultured dark:bg-dark-charcoal h-full"
-    [ngClass]="showPreview ? 'hidden md:block' : 'hidden'"
-  ></div>
-
-  <div class="flex-1 flex flex-col w-full" *ngIf="showPreview && selectedNote">
-    <div
-      class="pl-4 h-11 bg-cultured dark:bg-dark-jungle flex-none flex justify-between items-center"
-    >
-      <h2 class="text-gray tracking-wider text-base">PREVIEW</h2>
-
-      <button
-        (click)="togglePreview()"
-        type="button"
-        class="p-4 flex justify-center items-center cursor-pointer border-none outline-none"
-      >
-        <img [src]="showPreview ? 'assets/icon-hide-preview.svg' : 'assets/icon-show-preview.svg'" alt="icon show preview" />
-      </button>
     </div>
 
     <div
-      class="px-4 py-1 w-full flex-grow markdown-preview overflow-y-auto dark:bg-chinese-black"
-      [innerHTML]="renderedContent"
-      *ngIf="showPreview"
+      *ngIf="selectedNote"
+      class="w-0.5 bg-cultured dark:bg-dark-charcoal h-full"
+      [ngClass]="showPreview ? 'hidden md:block' : 'hidden'"
     ></div>
-  </div>
+
+    <div
+      class="flex-1 flex flex-col w-full"
+      *ngIf="showPreview && selectedNote"
+    >
+      <div
+        class="pl-4 h-11 bg-cultured dark:bg-dark-jungle flex-none flex justify-between items-center"
+      >
+        <h2 class="text-gray tracking-wider text-base">PREVIEW</h2>
+
+        <button
+          (click)="togglePreview()"
+          type="button"
+          class="p-4 flex justify-center items-center cursor-pointer border-none outline-none"
+        >
+          <img
+            [src]="
+              showPreview
+                ? 'assets/icon-hide-preview.svg'
+                : 'assets/icon-show-preview.svg'
+            "
+            alt="icon show preview"
+          />
+        </button>
+      </div>
+
+      <div
+        class="px-4 py-1 w-full flex-grow markdown-preview overflow-y-auto dark:bg-chinese-black"
+        [innerHTML]="renderedContent"
+        *ngIf="showPreview"
+      ></div>
+    </div>
+  </ng-container>
 </div>
 
 <ng-template #noNote>
   <div
-    class="h-full flex items-center flex-col justify-center p-4 dark:bg-chinese-black"
+    class="h-full w-full flex items-center flex-col justify-center p-4 dark:bg-chinese-black"
   >
     <p class="mb-2 font-light text-gray text-center">
       Looks like you deleted everything! Please create a new document
