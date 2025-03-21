@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1741819637148,
+  "timestamp": 1742581448626,
   "index": "/markdown-notes/index.csr.html",
   "assetGroups": [
     {
@@ -14,10 +14,10 @@
         "/markdown-notes/favicon.ico",
         "/markdown-notes/index.csr.html",
         "/markdown-notes/index.html",
-        "/markdown-notes/main-NRERGFIY.js",
+        "/markdown-notes/main-KHSLW2CA.js",
         "/markdown-notes/manifest.webmanifest",
         "/markdown-notes/polyfills-FFHMD2TL.js",
-        "/markdown-notes/styles-7LQGHKCM.css"
+        "/markdown-notes/styles-3SSMRSOF.css"
       ],
       "patterns": []
     },
@@ -33,10 +33,10 @@
         "/markdown-notes/assets/icon-dark-mode.svg",
         "/markdown-notes/assets/icon-delete.svg",
         "/markdown-notes/assets/icon-document.svg",
+        "/markdown-notes/assets/icon-export.svg",
         "/markdown-notes/assets/icon-hide-preview.svg",
         "/markdown-notes/assets/icon-light-mode.svg",
         "/markdown-notes/assets/icon-menu.svg",
-        "/markdown-notes/assets/icon-save.svg",
         "/markdown-notes/assets/icon-show-preview.svg",
         "/markdown-notes/icons/icon-128x128.png",
         "/markdown-notes/icons/icon-144x144.png",
@@ -56,10 +56,10 @@
     "/markdown-notes/assets/icon-dark-mode.svg": "b040071609a2f3c440320a5c75a59a926d7e7e6f",
     "/markdown-notes/assets/icon-delete.svg": "7cd71fa173cc5c113174d2dcdf3b65f5152629aa",
     "/markdown-notes/assets/icon-document.svg": "468a74d7dc0dc9c7a3b017adf5e17bba3e3f8627",
+    "/markdown-notes/assets/icon-export.svg": "b742cb11b5daccb386f0b6fc65dcc876f1fee035",
     "/markdown-notes/assets/icon-hide-preview.svg": "ab699a580b28ad5e487c260bac117c0029fd16ef",
     "/markdown-notes/assets/icon-light-mode.svg": "1726208685059035e3eb6466cf18d02d1533cc41",
     "/markdown-notes/assets/icon-menu.svg": "56efa52d45c73a37496920f733ec396893714faf",
-    "/markdown-notes/assets/icon-save.svg": "51e96e06d363623ff68fdf88c7d4b5fa74649859",
     "/markdown-notes/assets/icon-show-preview.svg": "8f05774c5645e2c730f7ccdbe8dc381e719e0a6b",
     "/markdown-notes/favicon.ico": "db2244c90b86066f08f7242c8bc7b612cd995a96",
     "/markdown-notes/icons/icon-128x128.png": "f912963bdc6d5a38d8f1dd0afbaab2ce8d657acb",
@@ -70,12 +70,12 @@
     "/markdown-notes/icons/icon-512x512.png": "1de182f76f7329dfa8f9fcdd1fdcdd695bea6a99",
     "/markdown-notes/icons/icon-72x72.png": "aa88a6096bd973be7f6d7a5489bfa6bc2463f8c4",
     "/markdown-notes/icons/icon-96x96.png": "7fb8f59c30ce2ff12c700321a0b39e14b3dc8f95",
-    "/markdown-notes/index.csr.html": "0605f9ffba85ca8874def5f6a33f03ae53d8bb13",
-    "/markdown-notes/index.html": "eba41cdee6017acc2ed4ed37dd571d6f1185b172",
-    "/markdown-notes/main-NRERGFIY.js": "474f366bf8414f1d45d68876247f67a20e6f651b",
+    "/markdown-notes/index.csr.html": "818c7405c3cf47f31f1aa3262b978d35043aad0a",
+    "/markdown-notes/index.html": "13de078d5273ac927aaf5e7e069c972af45c6c70",
+    "/markdown-notes/main-KHSLW2CA.js": "1605525b2976d2be3bc5e59e650b6edd79ab1d73",
     "/markdown-notes/manifest.webmanifest": "cc8028a81d21e4ba2ac58bfc43e93bbcc38d03dd",
     "/markdown-notes/polyfills-FFHMD2TL.js": "f49b49a155bc7d192db62a4c15d0a612b460a667",
-    "/markdown-notes/styles-7LQGHKCM.css": "41bf8fc898ffe833eb6f20d1c80b0f6e35b9bb39"
+    "/markdown-notes/styles-3SSMRSOF.css": "8824e67489ea0889b7a7d48f7bf3801a8c5db79b"
   },
   "navigationUrls": [
     {
